@@ -34,12 +34,7 @@ public class DBClients extends DBConnector{
         sql= "CALL DelMusteri("+id+")";
         this.Save();
     }
-    private void Save(){
-        try {
-            this.stat.execute(sql);
-        } catch (Exception e) {
-        }
-    }
+    
     private ArrayList<Client> Return() throws SQLException{
         ResultSet ss = this.stat.executeQuery(sql);
         ArrayList<Client> mylist = new ArrayList<Client>();

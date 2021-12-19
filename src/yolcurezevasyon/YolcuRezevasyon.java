@@ -1,7 +1,9 @@
 package yolcurezevasyon;
 
+import DB.DBBuses;
 import DB.DBCities;
 import DB.DBClients;
+import DB.DBTickets;
 import java.sql.SQLException;
 
 
@@ -9,12 +11,9 @@ public class YolcuRezevasyon {
 
     
     public static void main(String[] args) throws SQLException {
-        DBCities Sehirler = new DBCities();
-        DBClients clients = new DBClients();
-        clients.deleteClient(9);
-        
-        NewJFrame form= new NewJFrame();
-        
+       DBTickets tic = new DBTickets();
+       tic.addTicket(1, 45.6, 2, 1);
+        System.out.println("yolcurezevasyon.YolcuRezevasyon.main()"+tic.getTicket(5).fiyat);
 //        
 //        ArrayList<User> users = userc.getUsers();
 //        NewJFrame form= new NewJFrame();

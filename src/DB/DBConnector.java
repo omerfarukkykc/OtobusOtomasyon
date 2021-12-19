@@ -10,12 +10,19 @@ public class DBConnector {
     private final String PASSWORD = "1234";
     Connection conn = null;
     Statement stat = null;
+    String sql;
     public DBConnector(){
         try {
             conn = DriverManager.getConnection(DB_URL,USERNAME,PASSWORD);
             stat = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    protected void Save(){
+        try {
+            this.stat.execute(sql);
+        } catch (Exception e) {
         }
     }
     
