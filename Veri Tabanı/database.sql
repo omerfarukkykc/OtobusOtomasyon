@@ -1,0 +1,59 @@
+CREATE DATABASE IF NOT EXISTS otobusotomasyon;
+use otobusotomasyon;
+
+DELIMITER $$
+CREATE PROCEDURE CreateTabels ()
+BEGIN	
+	
+	CREATE TABLE `seferler`(
+		`sefer_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`kalkisTarih` DATETIME NOT NULL,
+		`varisTarih` DATETIME NOT NULL,
+		`kalkisYer_ID` INT NOT NULL,
+		`varisYer_ID` INT NOT NULL,
+		`otobus_ID` INT NOT NULL
+	);
+
+	CREATE TABLE `iller`(
+		`il_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`ilAdi` VARCHAR(255) NOT NULL
+	);
+
+	CREATE TABLE `ilceler`(
+		`ilce_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`ilceAdi` VARCHAR(255) NOT NULL,
+		`il_ID` INT NOT NULL
+	);
+
+	CREATE TABLE `otobusler`(
+		`otobus_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`plaka` VARCHAR(20) NOT NULL,
+		`koltukSayisi` INT NOT NULL
+	);
+
+	CREATE TABLE `biletler`(
+		`bilet_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`seferID` INT NOT NULL,
+		`fiyat` INT NOT NULL,
+		`koltuk_ID` INT NOT NULL,
+		`musteri_ID` INT NOT NULL
+	);
+
+	CREATE TABLE `koltuklar`(
+		`koltuk_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`arac_ID` INT NOT NULL,
+		`koltukNumarası` INT NOT NULL
+	);
+
+	CREATE TABLE `musteriler`(
+		`musteri_ID` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		`adi` VARCHAR(255) NOT NULL,
+		`soyadi` VARCHAR(255) NOT NULL,
+		`tc` VARCHAR(255) NOT NULL,
+		`hesKodu` VARCHAR(255) NOT NULL,
+		`cinsiyeti` ENUM("KADIN", "ERKEK") NOT NULL
+	);
+
+END$$
+DELIMITER ;
+CALL CreateTabels();
