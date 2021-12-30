@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Models;
 
-/**
- *
- * @author omert
- */
 public class Bus {
-    
+    public int id;
+    public int koltukSayisi;
+    public String plaka;
+
+    public Bus(int id, String plaka,int koltukSayisi) {
+        this.id = id;
+        this.koltukSayisi = koltukSayisi;
+        this.plaka = plaka;
+    }
+
 }

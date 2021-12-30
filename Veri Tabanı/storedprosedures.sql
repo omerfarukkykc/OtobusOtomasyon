@@ -16,9 +16,9 @@ CREATE PROCEDURE GetIlceler(IN ilid INT)
 BEGIN 
 	SELECT *  FROM ilceler where il_ID = ilid;
 END //
-CREATE PROCEDURE GetSeferler(IN basla DATETIME,IN bitir DATETIME,IN KALKIS_ILCE_ID INT,IN VARIS_ILCE_ID INT)
+CREATE PROCEDURE GetSeferler(IN basla DATETIME,IN bitir DATETIME,IN kid INT,IN vid INT)
 BEGIN 
-	SELECT *  FROM seferler WHERE kalkisTarih BETWEEN basla and bitir AND kalkisYer_ID = KALKIS_ILCE_ID AND varisYer_ID = VARIS_ILCE_ID;
+	SELECT *  FROM seferler WHERE kalkisTarih BETWEEN basla and bitir AND kalkisYer_ID = kid AND varisYer_ID = vid;
 END //
 CREATE PROCEDURE GetYolcular(IN id INT)
 BEGIN 
@@ -73,7 +73,25 @@ BEGIN
 	DELETE FROM otobusler WHERE otobus_ID = id;
 	DELETE FROM koltuklar WHERE arac_ID = id;
 END //
+CREATE PROCEDURE GetOtobusler()
+BEGIN 
+	SELECT * FROM otobusler;
+END //
 
+CREATE PROCEDURE AddVoyage(IN bs DATETIME,IN bt DATETIME,IN bid INT,IN bsid INT,IN oid INT)
+BEGIN 
+	INSERT INTO seferler (kalkisTarih,varisTarih,kalkisYer_ID,varisYer_ID,otobus_ID) values (bs,bt,bid,bsid,oid);
+END //
+CREATE PROCEDURE UpBiletbiletler(IN id INT,IN sid INT,IN fiyat INT,IN koltuk_ID INT,IN musteri_ID INT)
+BEGIN 
+	UPDATE biletler SET seferID = sid, fiyat = fiyat, koltuk_ID = koltuk_ID,musteri_ID = musteri_ID WHERE bilet_ID = id;
+END //
+
+CREATE PROCEDURE DelVoyage(IN id INT)
+BEGIN 
+	DELETE FROM seferler WHERE sefer_ID = id;
+    DELETE FROM biletler WHERE seferID = id;
+END //
 
 
 

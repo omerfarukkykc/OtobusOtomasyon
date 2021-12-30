@@ -21,4 +21,5 @@ public class Voyage {
         this.otobusID = otobusID;
     }
     
+    
 }

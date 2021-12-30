@@ -23,6 +23,9 @@ public class DBConnector {
         try {
             this.stat.execute(sql);
         } catch (Exception e) {
+            
+            System.out.println("DB.DBConnector.Save()");
+            
         }
     }
     
