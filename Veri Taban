@@ -118,4 +118,4 @@ FOR EACH ROW
 BEGIN
   INSERT INTO log(islem) VALUES("Yeni bir sefer eklendi");
 END//
-DELIMITER ;
+DELIMITER ;biletler
